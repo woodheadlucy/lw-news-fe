@@ -4,7 +4,7 @@ import '../App.css';
 const Footer = () => {
   return (
     <div className="footer">
-      <p>Footer</p>
+      <p>Lucy Woodhead 2019</p>
     </div>
   );
 };

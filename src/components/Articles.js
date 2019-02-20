@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import '../App.css';
 import { getArticles } from '../api';
 import SortBy from './SortBy';
-import { Link } from '@reach/router';
+import { Router, Link } from '@reach/router';
+import ArticleCardHomePage from './ArticleCardHomePage';
+import SingleArticle from './SingleArticle';
 
 class Articles extends Component {
   state = {
@@ -12,13 +14,16 @@ class Articles extends Component {
     const { articles } = this.state;
     return (
       <div className="main">
-        <SortBy sortedArticles={this.sortedArticles} />
+        {/* <SortBy sortedArticles={this.sortedArticles} /> */}
 
         {articles.map(article => (
           <p key={article.article_id}>
-            <Link to={`/articles/${this.article_id}`}>{article.title}</Link>
+            <Link to={`/articles/${article.article_id}`}>
+              <ArticleCardHomePage article={article} />
+            </Link>
           </p>
         ))}
+        <SingleArticle article={this.article} />
       </div>
     );
   }

@@ -24,13 +24,14 @@
   background: pink;
   grid-area: sidebar;
 }
+
 .main {
   background: aliceblue;
   grid-area: articles;
 }
 
 .footer {
-  background: coral;
+  background: lightblue;
   grid-area: footer;
 }
 
@@ -40,4 +41,8 @@
   font-size: 60%;
   padding: 0;
   margin: 0;
+}
+
+.articleCard {
+  background: grey;
 }

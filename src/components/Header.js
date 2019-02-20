@@ -1,10 +1,14 @@
 import React from 'react';
 import '../App.css';
+import { Link } from '@reach/router';
 
 const Header = () => {
   return (
     <div className="header">
-      <h1>LW NEWZ</h1>
+      <Link to="/">
+        {' '}
+        <h1>LW NEWZ</h1>{' '}
+      </Link>
     </div>
   );
 };

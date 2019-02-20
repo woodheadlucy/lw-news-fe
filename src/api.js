@@ -4,7 +4,7 @@ const BASE_URL = 'https://l-w-news.herokuapp.com/api';
 
 export const getTopics = async () => {
   const { data } = await axios.get(`${BASE_URL}/topics`);
-  console.log(data, '<<<');
+
   return data.topics;
 };
 
@@ -34,7 +34,7 @@ export const getTopArticles = async () => {
 
 export const getArticleById = async article_id => {
   const { data } = await axios.get(`${BASE_URL}/articles/${article_id}`);
-  console.log(data);
+
   return data.article;
 };
 
@@ -43,4 +43,28 @@ export const getCommentsByArticle = async article_id => {
     `${BASE_URL}/articles/${article_id}/comments`
   );
   return data.comments;
+};
+export const deleteArticleByID = async (article_id, comment_id) => {
+  const URL = comment_id
+    ? `${BASE_URL}/articles/${article_id}/comments/${comment_id}`
+    : `${BASE_URL}/articles/${article_id}`;
+
+  const { data } = await axios.delete(URL);
+  return data;
+};
+
+export const fetchUser = async username => {
+  const { data } = await axios.get(`${BASE_URL}/users/${username}`);
+  return data.user;
+};
+
+export const addCommentByArticleId = async (body, username, article_id) => {
+  const comment = (await axios.post(
+    `${BASE_URL}/articles/${article_id}/comments`,
+    {
+      body,
+      username,
+    }
+  )).data.comment;
+  return { ...comment, author: comment.username };
 };
