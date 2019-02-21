@@ -3,6 +3,7 @@ import { addArticle } from '../api';
 import Articles from './Articles';
 import { navigate } from '@reach/router';
 import NewTopic from './NewTopic';
+import './AddArticle.css';
 
 class AddArticle extends Component {
   state = {
@@ -15,11 +16,11 @@ class AddArticle extends Component {
     const { topics, user } = this.props;
 
     return (
-      <div className="sidebar">
+      <div>
         {this.state.topic === 'add-topic' && <NewTopic user={user} />}
         {this.state.topic !== 'add topic' && (
           <form className="articleAdd" onSubmit={this.handleSubmit}>
-            <h1>Add an article</h1> <label>Title</label>
+            <h1>Add your article</h1> <label>Title</label>
             <input
               type="text"
               value={title}
@@ -47,6 +48,7 @@ class AddArticle extends Component {
             <br />
             <label>Your article</label>
             <input
+              className="typing"
               type="text"
               value={body}
               onChange={this.handleChange}

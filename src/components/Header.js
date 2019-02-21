@@ -6,7 +6,7 @@ import { Link } from '@reach/router';
 const Header = () => {
   return (
     <div className="header">
-      <Link to="/">
+      <Link className="head" to="/">
         {' '}
         <h1>LW NEWZ</h1>{' '}
       </Link>

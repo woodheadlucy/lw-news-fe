@@ -5,8 +5,8 @@ import { Link } from '@reach/router';
 import ArticleCardHomePage from './ArticleCardHomePage';
 import SingleArticle from './SingleArticle';
 import { addArticle } from '../api';
-import throttle from 'lodash.throttle';
 import SortBy from './SortBy';
+import AddArticle from './AddArticle';
 
 class Articles extends Component {
   state = {
@@ -15,6 +15,7 @@ class Articles extends Component {
   };
   render() {
     const { articles, isLoading } = this.state;
+    const { topics, user } = this.props;
 
     return (
       <section className="list">
@@ -23,10 +24,13 @@ class Articles extends Component {
         ) : (
           <div className="main">
             <SortBy sortedArticles={this.sortedArticles} />
-
+            <AddArticle topics={topics} user={user} />{' '}
             {articles.map(article => (
               <p key={article.article_id}>
-                <Link to={`/articles/${article.article_id}`}>
+                <Link
+                  className="linktoArticle"
+                  to={`/articles/${article.article_id}`}
+                >
                   <ArticleCardHomePage article={article} />
                 </Link>
               </p>
@@ -59,7 +63,6 @@ class Articles extends Component {
     const { topic } = this.props;
 
     getArticles(topic).then(articles => {
-      console.log(articles, '<< ARETHE ARTICLES HERE');
       this.setState({ articles, isLoading: false });
     });
   };

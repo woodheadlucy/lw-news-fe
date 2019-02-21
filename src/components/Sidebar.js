@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import './Sidebar.css';
 import { Link } from '@reach/router';
 const Sidebar = ({ user, logout }) => {
   return (
@@ -8,7 +8,14 @@ const Sidebar = ({ user, logout }) => {
         {' '}
         <p>Welcome to NC news {`${user.username}`}</p>
         <button onClick={logout}>Logout</button>
-        <Link to={`/users`}>All users</Link>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <Link className="allUsersLink" to={`/users`}>
+          Show all users
+        </Link>
       </section>
     </div>
   );

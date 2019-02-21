@@ -1,0 +1,9 @@
+.articleAdd {
+  display: grid;
+}
+
+.articleAdd.typing {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}

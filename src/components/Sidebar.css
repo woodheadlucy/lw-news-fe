@@ -1,0 +1,11 @@
+.sidebar {
+  background: #ae7dad;
+  grid-area: sidebar;
+}
+
+.allUsersLink {
+  background: lavender;
+  text-decoration: none;
+
+  width: auto;
+}

@@ -1,43 +1,50 @@
 .articleBox {
   display: grid;
-  grid-template-rows: auto;
-  grid-auto-columns: 50% 50%;
+  background-color: #ae7dad;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  grid-auto-columns: 1fr 1fr;
   grid-template-areas:
     'title topic'
     'body body'
-    'null author'
+    'created author'
     'null votes'
-    'delete comments';
+    'delete commentButton';
 }
 
-.title {
+.title2 {
   grid-area: title;
+  font-size: 16px;
   background-color: purple;
+  padding: 0;
 }
 
-.topic {
+.topic2 {
   grid-area: topic;
-  background-color: aquamarine;
+  background-color: purple;
+  text-align: right;
 }
-.body {
+.body2 {
   grid-area: body;
   background-color: blueviolet;
 }
 
-.author {
+.author2 {
   grid-area: author;
-  background-color: red;
+  text-align: right;
+}
+.createdAt2 {
+  grid-area: created;
+  text-align: left;
 }
 .deleteButton {
   grid-area: delete;
   color: grey;
 }
 .commentsButton {
-  grid-area: comments;
+  grid-area: commentButton;
   background-color: pink;
 }
 
 .votes {
   grid-area: votes;
-  background-color: orange;
 }

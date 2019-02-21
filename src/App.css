@@ -11,18 +11,13 @@
 }
 
 .header {
-  background: royalblue;
+  background: #720070;
   grid-area: header;
 }
 
 .nav {
   background: lavender;
   grid-area: nav;
-}
-
-.sidebar {
-  background: pink;
-  grid-area: sidebar;
 }
 
 .main {
@@ -34,7 +29,7 @@
 }
 
 .footer {
-  background: lightblue;
+  background: #720070;
   grid-area: footer;
 }
 
@@ -44,11 +39,6 @@
   font-size: 60%;
   padding: 0;
   margin: 0;
-}
-
-.articleCard {
-  background: grey;
-  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .list {

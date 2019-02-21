@@ -27,17 +27,19 @@ class SingleArticle extends Component {
     return (
       <div className="articleBox">
         {/* {articleDeleted && <p>Article deleted!</p>} */}
-        <h2 className="title">{article.title}</h2>
-        <p className="topic">{article.topic}</p>
-        <p className="body">{article.body}</p>
+        <h2 className="title2">{article.title}</h2>
+        <p className="topic2">{article.topic}</p>
+        <p className="body2">{article.body}</p>
         {/* same logic so can only delete own article and own comment */}
         {article.author === user.username ? (
           <p>Votes:{article.votes}</p>
         ) : (
           <Voter votes={article.votes} article_id={article.article_id} />
         )}
-        <p className="author">Author: {article.author}</p>
-        <p>{Moment(article.created_at, 'YYYY-MM-DD-Thh:mm:ss').fromNow()}</p>
+        <p className="author2">Author: {article.author}</p>
+        <p className="createdAt2">
+          {Moment(article.created_at, 'YYYY-MM-DD-Thh:mm:ss').fromNow()}
+        </p>
 
         {article.author === user.username && (
           <DeleteArticle

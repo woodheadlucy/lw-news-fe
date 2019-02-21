@@ -7,12 +7,12 @@ import AddArticle from './AddArticle';
 
 class Nav extends Component {
   state = {
-    topics: [],
+    // topics: [],
   };
 
   render() {
-    const { topics } = this.state;
-    const { user } = this.props;
+    // const { topics } = this.state;
+    const { user, topics } = this.props;
 
     return (
       <div className="nav links">
@@ -21,20 +21,9 @@ class Nav extends Component {
             <Link to={`/topics/${topic.slug}`}>{topic.slug} </Link>
           </span>
         ))}
-        <AddArticle topics={topics} user={user} />
       </div>
     );
   }
-
-  componentDidMount() {
-    this.fetchTopics();
-  }
-
-  fetchTopics = () => {
-    getTopics().then(topics => {
-      this.setState({ topics });
-    });
-  };
 }
 
 export default Nav;

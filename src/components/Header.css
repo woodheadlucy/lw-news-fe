@@ -1,3 +1,11 @@
 .header {
   font-family: palatino;
 }
+
+h1 {
+  color: wheat;
+}
+
+.head {
+  text-decoration: none;
+}

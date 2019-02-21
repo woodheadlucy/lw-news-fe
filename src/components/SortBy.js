@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getSortedArticles } from '../api';
-import '../App.css';
+import './SortBy.css';
 
 class SortBy extends Component {
   state = {
@@ -59,6 +59,7 @@ class SortBy extends Component {
               <option value="20">20</option>
             </select>
           </div>
+          <br />
           <button type="submit" className="SubmitButton">
             Sort
           </button>
@@ -69,7 +70,7 @@ class SortBy extends Component {
             disabled={p < 2}
             className="responsiveButton"
           >
-            Previous
+            Previous page
           </button>
           <p className="">{p}</p>
           <button
@@ -77,7 +78,7 @@ class SortBy extends Component {
             disabled={nextPage}
             className="responsiveButton"
           >
-            Next
+            Next page
           </button>
         </div>
       </div>

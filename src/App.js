@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import Articles from './components/Articles';
 import { Router } from '@reach/router';
 import Auth from './components/Auth';
-import { fetchUser } from './api';
+import { fetchUser, getTopics } from './api';
 import './App.css';
 import SingleArticle from './components/SingleArticle';
 import NoMatch from './components/NoMatch';
@@ -16,22 +16,23 @@ import SingleUserArticles from './components/SingleUserArticles';
 class App extends Component {
   state = {
     user: {},
+    topics: [],
   };
   render() {
     console.log(this.state.user, '<<< THIS IS USER FROM APP ');
-    const { user } = this.state;
+    const { user, topics } = this.state;
     return (
       <div className="App">
         <Header />
-        <Nav user={user} />
+        <Nav user={user} topics={topics} />
         <Auth user={user} login={this.setUser}>
           <Router className="main">
             <Articles path="/" />
-            <Articles path="/topics/:topic" />
+            <Articles path="/topics/:topic" topics={topics} user={user} />
             <SingleArticle path="/articles/:article_id" user={user} />
             <Users path="/users" />
             <SingleUserArticles path="/users/:username/articles" />
-            {/* <NoMatch default /> */}
+            <NoMatch default />
           </Router>
           <Sidebar user={user} logout={this.clearUser} />
         </Auth>
@@ -40,6 +41,15 @@ class App extends Component {
     );
   }
 
+  componentDidMount() {
+    this.fetchTopics();
+  }
+
+  fetchTopics = () => {
+    getTopics().then(topics => {
+      this.setState({ topics });
+    });
+  };
   setUser = user => {
     fetchUser(user).then(user => {
       this.setState({ user });

@@ -13,6 +13,11 @@ export const getUsers = async () => {
   return data.users;
 };
 
+export const fetchUser = async username => {
+  const { data } = await axios.get(`${BASE_URL}/users/${username}`);
+  return data.user;
+};
+
 export const getArticlesByUsername = async username => {
   const { data } = await axios.get(`${BASE_URL}/users/${username}/articles`);
   return data.articles;
@@ -72,11 +77,6 @@ export const deleteComment = async (article_id, comment_id) => {
     `${BASE_URL}/articles/${article_id}/comments/${comment_id}`
   );
   return data;
-};
-
-export const fetchUser = async username => {
-  const { data } = await axios.get(`${BASE_URL}/users/${username}`);
-  return data.user;
 };
 
 export const addCommentByArticleId = async (body, article_id, userObj) => {
