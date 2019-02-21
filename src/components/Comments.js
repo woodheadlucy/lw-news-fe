@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { getCommentsByArticle, deleteComment } from '../api';
 import Moment from 'moment';
 import Voter from './Voter';
-import { navigate } from '@reach/router';
 import CommentAdd from './CommentAdd';
 import './Comments.css';
 import DeleteComment from './DeleteComment';
@@ -30,11 +29,12 @@ class Comments extends Component {
               comment_id={comment.comment_id}
               article_id={comment.article_id}
             />
-            <DeleteComment
-              comment={comment}
-              // comment_id={comments.comment_id}
-              deleteCommFunction={this.handleDeleteComment}
-            />
+            {comment.username === user.username && (
+              <DeleteComment
+                comment={comment}
+                deleteCommFunction={this.handleDeleteComment}
+              />
+            )}
           </div>
         ))}
         <CommentAdd

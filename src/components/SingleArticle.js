@@ -34,10 +34,13 @@ class SingleArticle extends Component {
         )}
         <p className="author">Author: {article.author}</p>
         <p>{Moment(article.created_at, 'YYYY-MM-DD-Thh:mm:ss').fromNow()}</p>
-        <DeleteArticle
-          article_id={article_id}
-          deleteFunction={this.handleDeleteArticle}
-        />
+
+        {article.author === user.username && (
+          <DeleteArticle
+            article_id={article_id}
+            deleteFunction={this.handleDeleteArticle}
+          />
+        )}
 
         <button className="commentsButton" onClick={this.toggleComments}>
           {commentsShown ? 'Hide comments' : 'Show comments'}

@@ -5,7 +5,6 @@ import { Link } from '@reach/router';
 import ArticleCardHomePage from './ArticleCardHomePage';
 import SingleArticle from './SingleArticle';
 import { addArticle } from '../api';
-import AddArticle from './AddArticle';
 
 class Articles extends Component {
   state = {
@@ -14,7 +13,6 @@ class Articles extends Component {
   };
   render() {
     const { articles, isLoading } = this.state;
-    const { user } = this.props;
     if (isLoading) return <h3>Loading articles...</h3>;
     return (
       <div className="main">

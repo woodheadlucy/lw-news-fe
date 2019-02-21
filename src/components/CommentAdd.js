@@ -11,7 +11,7 @@ class CommentAdd extends Component {
     return (
       <div>
         <form className="commentAdd" onSubmit={this.handleSubmit}>
-          <h1>Add comment</h1>
+          <h3>Add comment</h3>
           <input type="text" value={body} onChange={this.handleChange} />
 
           <button type="submit">Submit</button>

@@ -8,6 +8,18 @@ export const getTopics = async () => {
   return data.topics;
 };
 
+export const getUsers = async () => {
+  const { data } = await axios.get(`${BASE_URL}/users`);
+  return data.users;
+};
+
+export const addNewTopic = async (slug, description) => {
+  const { data } = await axios.post(`${BASE_URL}/topics/`, {
+    slug,
+    description,
+  });
+  return data.topic;
+};
 export const getArticles = async topic => {
   const URL = topic
     ? `${BASE_URL}/topics/${topic}/articles`
