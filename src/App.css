@@ -26,8 +26,11 @@
 }
 
 .main {
+  display: grid;
+  grid-template: 1fr 2fr 1fr;
   background: aliceblue;
   grid-area: articles;
+  overflow-y: auto;
 }
 
 .footer {
@@ -45,4 +48,5 @@
 
 .articleCard {
   background: grey;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }

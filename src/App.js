@@ -8,7 +8,6 @@ import { Router } from '@reach/router';
 import Auth from './components/Auth';
 import { fetchUser } from './api';
 import './App.css';
-import ArticleCardHomePage from './components/ArticleCardHomePage';
 import SingleArticle from './components/SingleArticle';
 
 class App extends Component {
@@ -16,18 +15,19 @@ class App extends Component {
     user: {},
   };
   render() {
+    console.log(this.state.user, '<<< THIS IS USER FROM APP ');
     const { user } = this.state;
     return (
       <div className="App">
         <Header />
-        <Nav />
+        <Nav user={user} />
         <Auth user={user} login={this.setUser}>
           <Router className="main">
             <Articles path="/" />
             <Articles path="/topics/:topic" />
-            <SingleArticle path="/articles/:article_id" />
+            <SingleArticle path="/articles/:article_id" user={user} />
           </Router>
-          <Sidebar user={this.setUser} logout={this.clearUser} />
+          <Sidebar user={user} logout={this.clearUser} />
         </Auth>
         <Footer />
       </div>

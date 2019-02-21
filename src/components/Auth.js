@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 class Auth extends Component {
-  state = { username: '' };
+  state = { username: 'jessjelly' };
 
   render() {
     const { user, children } = this.props;
     const { username } = this.state;
-
-    if (user.username) return children;
+    console.log(user, '<<<USER FROM AUTH');
+    if (user && user.username) return children;
     return (
       <form className="sidebar" onSubmit={this.handleSubmit}>
         <label>Username:</label>

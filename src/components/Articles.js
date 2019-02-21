@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import '../App.css';
 import { getArticles } from '../api';
-import SortBy from './SortBy';
-import { Router, Link } from '@reach/router';
+import { Link } from '@reach/router';
 import ArticleCardHomePage from './ArticleCardHomePage';
 import SingleArticle from './SingleArticle';
+import { addArticle } from '../api';
+import AddArticle from './AddArticle';
 
 class Articles extends Component {
   state = {
     articles: [],
+    isLoading: true,
   };
   render() {
-    const { articles } = this.state;
+    const { articles, isLoading } = this.state;
+    const { user } = this.props;
+    if (isLoading) return <h3>Loading articles...</h3>;
     return (
       <div className="main">
         {/* <SortBy sortedArticles={this.sortedArticles} /> */}
@@ -28,10 +32,20 @@ class Articles extends Component {
     );
   }
 
+  postedArticle = (title, topic, body, username) => {
+    addArticle(title, topic, body, username).then(article => {
+      this.setState(prevState => ({
+        articles: [article, ...prevState.articles],
+      }));
+    });
+  };
+
   componentDidMount() {
     this.fetchArticles();
   }
+
   componentDidUpdate(prevProps, prevState) {
+    console.log(prevProps, '<<PREVPROPS', prevState, '<PREVSTATE');
     if (prevProps.topic !== this.props.topic) {
       this.fetchArticles();
     }
@@ -39,7 +53,8 @@ class Articles extends Component {
   fetchArticles = () => {
     const { topic } = this.props;
     getArticles(topic).then(articles => {
-      this.setState({ articles });
+      console.log('<< also articles');
+      this.setState({ articles, isLoading: false });
     });
   };
 

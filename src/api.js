@@ -44,12 +44,16 @@ export const getCommentsByArticle = async article_id => {
   );
   return data.comments;
 };
-export const deleteArticleByID = async (article_id, comment_id) => {
-  const URL = comment_id
-    ? `${BASE_URL}/articles/${article_id}/comments/${comment_id}`
-    : `${BASE_URL}/articles/${article_id}`;
+export const deleteArticleById = async article_id => {
+  const data = await axios.delete(`${BASE_URL}/articles/${article_id}`);
+  return data;
+};
 
-  const { data } = await axios.delete(URL);
+export const deleteComment = async (article_id, comment_id) => {
+  console.log(article_id, comment_id, '<<FROMTHE API');
+  const data = axios.delete(
+    `${BASE_URL}/articles/${article_id}/comments/${comment_id}`
+  );
   return data;
 };
 
@@ -58,13 +62,36 @@ export const fetchUser = async username => {
   return data.user;
 };
 
-export const addCommentByArticleId = async (body, username, article_id) => {
-  const comment = (await axios.post(
+export const addCommentByArticleId = async (body, article_id, userObj) => {
+  console.log(body, article_id, userObj);
+  const { username } = userObj;
+  const comment = await axios.post(
     `${BASE_URL}/articles/${article_id}/comments`,
     {
       body,
       username,
     }
-  )).data.comment;
+  );
   return { ...comment, author: comment.username };
+};
+
+export const voteOnResource = async ({ article_id, direction, comment_id }) => {
+  const URL = comment_id
+    ? `${BASE_URL}/articles/${article_id}/comments/${comment_id}`
+    : `${BASE_URL}/articles/${article_id}`;
+
+  const { data } = await axios.patch(URL, {
+    inc_votes: direction,
+  });
+  return data.article;
+};
+
+export const addArticle = async (title, topic, body, author) => {
+  console.log(title, topic, body, author);
+  const res = await axios.post(`${BASE_URL}/topics/${topic}/articles`, {
+    title,
+    body,
+    author,
+  });
+  return res.data.article;
 };

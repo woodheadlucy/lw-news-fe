@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { addCommentByArticleId } from '../api';
+import Comments from './Comments';
 
 class CommentAdd extends Component {
   state = {
@@ -7,12 +9,15 @@ class CommentAdd extends Component {
   render() {
     const { body } = this.state;
     return (
-      <form className="commentAdd" onSubmit={this.handleSubmit}>
-        <h1>Add comment</h1>
-        <input type="text" value={body} onChange={this.handleChange} />
+      <div>
+        <form className="commentAdd" onSubmit={this.handleSubmit}>
+          <h1>Add comment</h1>
+          <input type="text" value={body} onChange={this.handleChange} />
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit">Submit</button>
+        </form>
+        {body && <Comments newComm={this.state.body} />}
+      </div>
     );
   }
 
@@ -23,8 +28,8 @@ class CommentAdd extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { body } = this.state;
-    const { article_id, user, postedcomment } = this.props;
-    postedcomment(body, article_id, user);
+    const { article_id, user } = this.props;
+    addCommentByArticleId(body, article_id, user);
     this.setState({ body: '' });
   };
 }

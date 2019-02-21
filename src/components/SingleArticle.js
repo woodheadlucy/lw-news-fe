@@ -1,40 +1,54 @@
 import React, { Component } from 'react';
 import Moment from 'moment';
-import { addCommentByArticleId, deleteArticleByID } from '../api';
+import { addCommentByArticleId, deleteArticleById } from '../api';
 import { getArticleById } from '../api';
-import ArticleCardHomePage from './ArticleCardHomePage';
 import Comments from './Comments';
-import { Router } from '@reach/router';
-import CommentAdd from './CommentAdd';
-
+import { Router, navigate } from '@reach/router';
+import './SingleArticle.css';
+import Voter from './Voter';
+import DeleteArticle from './DeleteArticle';
 class SingleArticle extends Component {
   state = {
     article: {},
     comments: [],
-    votes: 0,
+
     commentsShown: false,
+    isLoading: true,
   };
 
   render() {
-    const { article, commentsShown } = this.state;
-    // const { article_id, title, body } = this.props;
+    const { article, commentsShown, isLoading } = this.state;
+    const { user, article_id } = this.props;
+
+    if (isLoading) return <h1>Loading article...</h1>;
     return (
-      <div className="SingleArticle">
-        <h2>{article.title}</h2>
-        <p>{article.topic}</p>
-        <p>{article.body}</p>
-        <p>Votes: {article.votes}</p>
-        <p>Author: {article.author}</p>
+      <div className="articleBox">
+        <h2 className="title">{article.title}</h2>
+        <p className="topic">{article.topic}</p>
+        <p className="body">{article.body}</p>
+        {/* same logic so can only delete own article and own comment */}
+        {article.author === user.username ? (
+          <p>Votes:{article.votes}</p>
+        ) : (
+          <Voter votes={article.votes} article_id={article.article_id} />
+        )}
+        <p className="author">Author: {article.author}</p>
         <p>{Moment(article.created_at, 'YYYY-MM-DD-Thh:mm:ss').fromNow()}</p>
-        <button onClick={this.handleDeleteArticle} className="deleteButton">
-          Delete this article
-        </button>
-        <CommentAdd />
+        <DeleteArticle
+          article_id={article_id}
+          deleteFunction={this.handleDeleteArticle}
+        />
+
         <button className="commentsButton" onClick={this.toggleComments}>
           {commentsShown ? 'Hide comments' : 'Show comments'}
         </button>
-        {commentsShown && <Comments comments={article.article_id} />}
-
+        {commentsShown && (
+          <Comments
+            comments={article.article_id}
+            user={user}
+            article_id={article_id}
+          />
+        )}
         <Router>
           <Comments path="/articles/:article_id/comments" />
         </Router>
@@ -42,6 +56,14 @@ class SingleArticle extends Component {
     );
   }
 
+  ///need to make sure it redirects!!!!!!!!!!
+  handleDeleteArticle = () => {
+    const { article_id } = this.props;
+    deleteArticleById(article_id).then(data => {
+      console.log(data);
+      navigate('/');
+    });
+  };
   toggleComments = () => {
     const { commentsShown } = this.state;
     this.setState({ commentsShown: !commentsShown });
@@ -55,17 +77,26 @@ class SingleArticle extends Component {
     });
   };
 
-  handleDeleteArticle = () => {
-    const article_id = this.state.article.article_id;
-    deleteArticleByID(article_id);
-  };
+  // componentDidMount() {
+  //   const { article_id } = this.props;
+  //   console.log(this.props, '<<<card');
+  //   getArticleById(article_id).then(article => {
+  //     this.setState({ article });
+  //   });
+  // }
 
   componentDidMount() {
+    this.fetchArticle();
+  }
+
+  fetchArticle() {
     const { article_id } = this.props;
-    console.log(this.props, '<<<card');
-    getArticleById(article_id).then(article => {
-      this.setState({ article });
-    });
+    if (
+      article_id &&
+      getArticleById(article_id).then(article => {
+        this.setState({ article, isLoading: false });
+      })
+    );
   }
 }
 

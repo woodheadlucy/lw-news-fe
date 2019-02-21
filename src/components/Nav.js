@@ -3,6 +3,7 @@ import '../App.css';
 import './Nav.css';
 import { Link } from '@reach/router';
 import { getTopics } from '../api';
+import AddArticle from './AddArticle';
 
 class Nav extends Component {
   state = {
@@ -11,7 +12,7 @@ class Nav extends Component {
 
   render() {
     const { topics } = this.state;
-    console.log(this.state, '<<<STATE');
+    const { user } = this.props;
 
     return (
       <div className="nav links">
@@ -20,6 +21,7 @@ class Nav extends Component {
             <Link to={`/topics/${topic.slug}`}>{topic.slug} </Link>
           </span>
         ))}
+        <AddArticle topics={topics} user={user} />
       </div>
     );
   }

@@ -1,0 +1,43 @@
+.articleBox {
+  display: grid;
+  grid-template-rows: auto;
+  grid-auto-columns: 50% 50%;
+  grid-template-areas:
+    'title topic'
+    'body body'
+    'null author'
+    'null votes'
+    'delete comments';
+}
+
+.title {
+  grid-area: title;
+  background-color: purple;
+}
+
+.topic {
+  grid-area: topic;
+  background-color: aquamarine;
+}
+.body {
+  grid-area: body;
+  background-color: blueviolet;
+}
+
+.author {
+  grid-area: author;
+  background-color: red;
+}
+.deleteButton {
+  grid-area: delete;
+  color: grey;
+}
+.commentsButton {
+  grid-area: comments;
+  background-color: pink;
+}
+
+.votes {
+  grid-area: votes;
+  background-color: orange;
+}

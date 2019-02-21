@@ -2,5 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: palatino;
+  text-decoration: none;
 }
