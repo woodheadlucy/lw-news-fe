@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import Users from './Users';
+import { Link } from '@reach/router';
 const Sidebar = ({ user, logout }) => {
   return (
     <div>
@@ -8,9 +8,7 @@ const Sidebar = ({ user, logout }) => {
         {' '}
         <p>Welcome to NC news {`${user.username}`}</p>
         <button onClick={logout}>Logout</button>
-      </section>
-      <section>
-        <Users />
+        <Link to={`/users`}>All users</Link>
       </section>
     </div>
   );

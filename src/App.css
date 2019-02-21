@@ -50,3 +50,8 @@
   background: grey;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+.list {
+  height: 100%;
+  overflow-y: auto;
+}

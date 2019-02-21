@@ -8,8 +8,7 @@ class NewTopicArticle extends Component {
   };
   render() {
     const { body, title } = this.state;
-    const { topic } = this.props;
-    console.log(topic, '<<<TOPIC');
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>

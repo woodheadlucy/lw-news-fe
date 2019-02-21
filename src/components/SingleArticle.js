@@ -7,6 +7,7 @@ import { Router, navigate } from '@reach/router';
 import './SingleArticle.css';
 import Voter from './Voter';
 import DeleteArticle from './DeleteArticle';
+import Error from './Error';
 class SingleArticle extends Component {
   state = {
     article: {},
@@ -14,15 +15,18 @@ class SingleArticle extends Component {
 
     commentsShown: false,
     isLoading: true,
+    errorStatus: null,
   };
 
   render() {
-    const { article, commentsShown, isLoading } = this.state;
+    const { article, commentsShown, isLoading, errorStatus } = this.state;
     const { user, article_id } = this.props;
-
+    // const { articleDeleted } = this.props.location;
+    if (errorStatus !== null) return <Error errorStatus={errorStatus} />;
     if (isLoading) return <h1>Loading article...</h1>;
     return (
       <div className="articleBox">
+        {/* {articleDeleted && <p>Article deleted!</p>} */}
         <h2 className="title">{article.title}</h2>
         <p className="topic">{article.topic}</p>
         <p className="body">{article.body}</p>
@@ -59,12 +63,11 @@ class SingleArticle extends Component {
     );
   }
 
-  ///need to make sure it redirects!!!!!!!!!!
   handleDeleteArticle = () => {
     const { article_id } = this.props;
     deleteArticleById(article_id).then(data => {
       console.log(data);
-      navigate('/');
+      navigate('/', { state: { articleDeleted: true } });
     });
   };
   toggleComments = () => {
@@ -80,14 +83,6 @@ class SingleArticle extends Component {
     });
   };
 
-  // componentDidMount() {
-  //   const { article_id } = this.props;
-  //   console.log(this.props, '<<<card');
-  //   getArticleById(article_id).then(article => {
-  //     this.setState({ article });
-  //   });
-  // }
-
   componentDidMount() {
     this.fetchArticle();
   }
@@ -96,9 +91,13 @@ class SingleArticle extends Component {
     const { article_id } = this.props;
     if (
       article_id &&
-      getArticleById(article_id).then(article => {
-        this.setState({ article, isLoading: false });
-      })
+      getArticleById(article_id)
+        .then(article => {
+          this.setState({ article, isLoading: false });
+        })
+        .catch(err => {
+          this.setState({ errorStatus: err.response.status });
+        })
     );
   }
 }

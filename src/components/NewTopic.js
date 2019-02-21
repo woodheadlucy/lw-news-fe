@@ -20,6 +20,7 @@ class NewTopic extends Component {
             type="text"
             value={slug}
             onChange={this.handleChange}
+            required
           />
           <label onChange={this.handleChange}>Topic description</label>
           <input
@@ -27,6 +28,7 @@ class NewTopic extends Component {
             type="text"
             value={description}
             onChange={this.handleChange}
+            required
           />
           <button type="submit">Submit new topic!!!</button>
         </form>

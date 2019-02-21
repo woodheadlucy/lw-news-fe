@@ -5,6 +5,8 @@ import { Link } from '@reach/router';
 import ArticleCardHomePage from './ArticleCardHomePage';
 import SingleArticle from './SingleArticle';
 import { addArticle } from '../api';
+import throttle from 'lodash.throttle';
+import SortBy from './SortBy';
 
 class Articles extends Component {
   state = {
@@ -13,20 +15,26 @@ class Articles extends Component {
   };
   render() {
     const { articles, isLoading } = this.state;
-    if (isLoading) return <h3>Loading articles...</h3>;
-    return (
-      <div className="main">
-        {/* <SortBy sortedArticles={this.sortedArticles} /> */}
 
-        {articles.map(article => (
-          <p key={article.article_id}>
-            <Link to={`/articles/${article.article_id}`}>
-              <ArticleCardHomePage article={article} />
-            </Link>
-          </p>
-        ))}
-        <SingleArticle article={this.article} />
-      </div>
+    return (
+      <section className="list">
+        {isLoading ? (
+          <h3>Loading articles...</h3>
+        ) : (
+          <div className="main">
+            <SortBy sortedArticles={this.sortedArticles} />
+
+            {articles.map(article => (
+              <p key={article.article_id}>
+                <Link to={`/articles/${article.article_id}`}>
+                  <ArticleCardHomePage article={article} />
+                </Link>
+              </p>
+            ))}
+            <SingleArticle article={this.article} />
+          </div>
+        )}
+      </section>
     );
   }
 
@@ -40,18 +48,18 @@ class Articles extends Component {
 
   componentDidMount() {
     this.fetchArticles();
+    // this.addScrollEventListener();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps, '<<PREVPROPS', prevState, '<PREVSTATE');
-    if (prevProps.topic !== this.props.topic) {
-      this.fetchArticles();
-    }
+    if (prevProps.topic !== this.props.topic) this.fetchArticles();
   }
+
   fetchArticles = () => {
     const { topic } = this.props;
+
     getArticles(topic).then(articles => {
-      console.log('<< also articles');
+      console.log(articles, '<< ARETHE ARTICLES HERE');
       this.setState({ articles, isLoading: false });
     });
   };

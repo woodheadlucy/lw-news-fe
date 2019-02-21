@@ -9,6 +9,9 @@ import Auth from './components/Auth';
 import { fetchUser } from './api';
 import './App.css';
 import SingleArticle from './components/SingleArticle';
+import NoMatch from './components/NoMatch';
+import Users from './components/Users';
+import SingleUserArticles from './components/SingleUserArticles';
 
 class App extends Component {
   state = {
@@ -26,6 +29,9 @@ class App extends Component {
             <Articles path="/" />
             <Articles path="/topics/:topic" />
             <SingleArticle path="/articles/:article_id" user={user} />
+            <Users path="/users" />
+            <SingleUserArticles path="/users/:username/articles" />
+            {/* <NoMatch default /> */}
           </Router>
           <Sidebar user={user} logout={this.clearUser} />
         </Auth>

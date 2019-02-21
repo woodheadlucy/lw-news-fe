@@ -25,6 +25,7 @@ class AddArticle extends Component {
               value={title}
               onChange={this.handleChange}
               name="title"
+              required
             />
             <br />
             <label>Topic</label>
@@ -50,6 +51,7 @@ class AddArticle extends Component {
               value={body}
               onChange={this.handleChange}
               name="body"
+              required
             />
             {this.state.topic !== 'add-topic' && (
               <button type="submit">Submit Article</button>
