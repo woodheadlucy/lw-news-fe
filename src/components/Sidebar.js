@@ -3,7 +3,7 @@ import './Sidebar.css';
 import { Link } from '@reach/router';
 const Sidebar = ({ user, logout }) => {
   return (
-    <div>
+    <div className="sidebarContainer">
       <section className="sidebar">
         {' '}
         <p>Welcome to NC news {`${user.username}`}</p>

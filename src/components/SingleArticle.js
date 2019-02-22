@@ -23,6 +23,7 @@ class SingleArticle extends Component {
     const { user, article_id } = this.props;
     // const { articleDeleted } = this.props.location;
     if (errorStatus !== null) return <Error errorStatus={errorStatus} />;
+    //how to get this so it doesn't show on the main article page
     if (isLoading) return <h1>Loading article...</h1>;
     return (
       <div className="articleBox">

@@ -72,7 +72,7 @@ class SortBy extends Component {
           >
             Previous page
           </button>
-          <p className="">{p}</p>
+          <p className="">page {p}</p>
           <button
             onClick={() => this.changePage(1)}
             disabled={nextPage}

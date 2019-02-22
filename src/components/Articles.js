@@ -7,16 +7,18 @@ import SingleArticle from './SingleArticle';
 import { addArticle } from '../api';
 import SortBy from './SortBy';
 import AddArticle from './AddArticle';
+import PropTypes from 'prop-types';
 
 class Articles extends Component {
   state = {
     articles: [],
+    addArticle: false,
     isLoading: true,
   };
   render() {
     const { articles, isLoading } = this.state;
     const { topics, user } = this.props;
-
+    console.log(topics);
     return (
       <section className="list">
         {isLoading ? (
@@ -24,16 +26,20 @@ class Articles extends Component {
         ) : (
           <div className="main">
             <SortBy sortedArticles={this.sortedArticles} />
-            <AddArticle topics={topics} user={user} />{' '}
+            <AddArticle
+              topics={topics}
+              user={user}
+              toggleAddArticle={this.toggleAddArticle}
+            />{' '}
             {articles.map(article => (
-              <p key={article.article_id}>
+              <section key={article.article_id}>
                 <Link
                   className="linktoArticle"
                   to={`/articles/${article.article_id}`}
                 >
                   <ArticleCardHomePage article={article} />
                 </Link>
-              </p>
+              </section>
             ))}
             <SingleArticle article={this.article} />
           </div>
@@ -72,4 +78,7 @@ class Articles extends Component {
   };
 }
 
+Articles.propTypes = {
+  articles: PropTypes.array.isRequired,
+};
 export default Articles;

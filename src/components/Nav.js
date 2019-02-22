@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import '../App.css';
 import './Nav.css';
 import { Link } from '@reach/router';
-import { getTopics } from '../api';
-import AddArticle from './AddArticle';
 
 class Nav extends Component {
   state = {
-    // topics: [],
+    topics: [],
   };
 
   render() {
     // const { topics } = this.state;
-    const { user, topics } = this.props;
+    const { topics } = this.props;
 
     return (
       <div className="nav links">

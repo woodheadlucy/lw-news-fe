@@ -80,7 +80,7 @@ class AddArticle extends Component {
     const { user } = this.props;
 
     addArticle(title, topic, body, user.username).then(article => {
-      console.log(article);
+      console.log(article, '<<<<NEW ARTICLE');
       navigate(`/articles/${article.article_id}`);
     });
     this.setState({ title: '', topic: '', body: '' });

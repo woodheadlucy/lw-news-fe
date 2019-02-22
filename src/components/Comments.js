@@ -5,6 +5,8 @@ import Voter from './Voter';
 import CommentAdd from './CommentAdd';
 import './Comments.css';
 import DeleteComment from './DeleteComment';
+import PropTypes from 'prop-types';
+
 class Comments extends Component {
   state = {
     comments: [],
@@ -25,6 +27,7 @@ class Comments extends Component {
             <p className="username">Username: {comment.username}</p>
 
             <Voter
+              className="votes2"
               votes={comment.votes}
               comment_id={comment.comment_id}
               article_id={comment.article_id}
@@ -72,5 +75,9 @@ class Comments extends Component {
     });
   };
 }
+
+Comments.propTypes = {
+  comments: PropTypes.array.isRequired,
+};
 
 export default Comments;

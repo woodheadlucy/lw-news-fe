@@ -1,16 +1,21 @@
 .articleCard {
   background: #ae7dad;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: palatino;
   display: grid;
   grid-template-areas:
     'title'
     'author'
     'body';
   border: 3px solid #720070;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 15rem;
+  padding: 4px;
 }
 
 .title1 {
   grid-area: title;
+  font-family: palatino;
 }
 
 .author1 {

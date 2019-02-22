@@ -1,5 +1,8 @@
+.sidebarContainer {
+  background-image: linear-gradient(#9d50bb, #6e48aa);
+}
 .sidebar {
-  background: #ae7dad;
+  background: #720070;
   grid-area: sidebar;
 }
 

@@ -1,0 +1,8 @@
+.allUsers {
+  display: flex;
+  flex-direction: column;
+}
+
+.theUser {
+  text-align: left;
+}

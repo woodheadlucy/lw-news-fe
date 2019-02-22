@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getUsers } from '../api';
 import { Link } from '@reach/router';
+import './Users.css';
 
 class Users extends Component {
   state = {
@@ -9,9 +10,9 @@ class Users extends Component {
   render() {
     const { users } = this.state;
     return (
-      <div>
+      <div className="allUsers">
         {users.map(user => (
-          <p key={user.username}>
+          <p className="theUser" key={user.username}>
             <Link to={`/users/${user.username}/articles`}>{user.username}</Link>
           </p>
         ))}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { addCommentByArticleId } from '../api';
 import Comments from './Comments';
+import './CommentAdd.css';
 
 class CommentAdd extends Component {
   state = {
@@ -11,7 +12,7 @@ class CommentAdd extends Component {
     return (
       <div>
         <form className="commentAdd" onSubmit={this.handleSubmit}>
-          <h3>Add comment</h3>
+          <h3 classname="addComm">Add comment</h3>
           <input type="text" value={body} onChange={this.handleChange} />
 
           <button type="submit">Submit</button>

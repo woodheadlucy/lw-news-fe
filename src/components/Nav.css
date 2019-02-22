@@ -5,4 +5,5 @@
   font-family: palatino;
   text-decoration: none;
   text-transform: uppercase;
+  overflow: scroll;
 }

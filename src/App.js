@@ -19,15 +19,16 @@ class App extends Component {
     topics: [],
   };
   render() {
-    console.log(this.state.user, '<<< THIS IS USER FROM APP ');
+    // console.log(this.state.user, '<<< THIS IS USER FROM APP ');
     const { user, topics } = this.state;
+    console.log(topics);
     return (
       <div className="App">
         <Header />
         <Nav user={user} topics={topics} />
         <Auth user={user} login={this.setUser}>
           <Router className="main">
-            <Articles path="/" />
+            <Articles path="/" topics={topics} user={user} />
             <Articles path="/topics/:topic" topics={topics} user={user} />
             <SingleArticle path="/articles/:article_id" user={user} />
             <Users path="/users" />
@@ -41,11 +42,26 @@ class App extends Component {
     );
   }
 
+  // componentDidMount() {
+  //   const retrievedState = localStorage.getItem('state');
+  //   if (retrievedState) {
+  //     this.setState(JSON.parse(retrievedState));
+  //   }
+  //   this.fetchTopics();
+  // }
+  componentDidUpdate() {
+    this.handleSave();
+  }
+  handleSave = () => {
+    localStorage.setItem('state', JSON.stringify(this.state));
+  };
+
   componentDidMount() {
     this.fetchTopics();
   }
 
   fetchTopics = () => {
+    console.log('fetching topics');
     getTopics().then(topics => {
       this.setState({ topics });
     });
