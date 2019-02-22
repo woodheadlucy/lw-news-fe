@@ -1,7 +1,7 @@
 .articleBox {
   display: grid;
   background-color: #ae7dad;
-  grid-template-rows: max-content;
+  grid-template-rows: 1fr 3fr 1fr 1fr;
   grid-auto-columns: 2fr 1fr;
   grid-template-areas:
     'title topic'
@@ -16,7 +16,7 @@
   grid-area: title;
   font-size: 16px;
   background-color: #ae7dad;
-  text-align: top, left;
+  text-align: left;
 }
 
 .topic2 {
@@ -36,11 +36,13 @@
   grid-area: author;
   text-align: right;
   font-family: palatino;
+  color: azure;
 }
 .createdAt2 {
   grid-area: created;
   text-align: left;
   font-family: palatino;
+  color: azure;
 }
 .deleteButton {
   grid-area: delete;

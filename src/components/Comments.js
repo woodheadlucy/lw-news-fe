@@ -46,7 +46,6 @@ class Comments extends Component {
           article_id={article_id}
         />
         {newComment}
-        )}
       </div>
     );
   }

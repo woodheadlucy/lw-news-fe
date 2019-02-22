@@ -21,17 +21,14 @@ class SingleArticle extends Component {
   render() {
     const { article, commentsShown, isLoading, errorStatus } = this.state;
     const { user, article_id } = this.props;
-    // const { articleDeleted } = this.props.location;
     if (errorStatus !== null) return <Error errorStatus={errorStatus} />;
     //how to get this so it doesn't show on the main article page
     if (isLoading) return <h1>Loading article...</h1>;
     return (
       <div className="articleBox">
-        {/* {articleDeleted && <p>Article deleted!</p>} */}
         <h2 className="title2">{article.title}</h2>
         <p className="topic2">{article.topic}</p>
         <p className="body2">{article.body}</p>
-        {/* same logic so can only delete own article and own comment */}
         {article.author === user.username ? (
           <p>Votes:{article.votes}</p>
         ) : (
@@ -69,7 +66,6 @@ class SingleArticle extends Component {
   handleDeleteArticle = () => {
     const { article_id } = this.props;
     deleteArticleById(article_id).then(data => {
-      console.log(data);
       navigate('/', { state: { articleDeleted: true } });
     });
   };

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import SortBy from './SortBy';
 import { getArticlesByUsername } from '../api';
+import './SingleUserArticles.css';
 
 class SingleUserArticles extends Component {
   state = { articles: [], isLoading: true, user: {} };
@@ -9,7 +10,7 @@ class SingleUserArticles extends Component {
     const { articles, isLoading } = this.state;
     if (isLoading) return <p>Loading....</p>;
     return (
-      <div className="main">
+      <div className="singleUserA">
         <SortBy sortedArticles={this.sortedArticles} />
         {articles.map(article => (
           <div key={article.article_id}>
