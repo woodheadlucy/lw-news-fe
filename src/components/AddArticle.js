@@ -14,6 +14,7 @@ class AddArticle extends Component {
   render() {
     const { body, title, topic } = this.state;
     const { topics, user } = this.props;
+    console.log(this.state);
 
     return (
       <div>
@@ -55,16 +56,12 @@ class AddArticle extends Component {
               name="body"
               required
             />
-            {this.state.topic !== 'add-topic' && (
+            {topic !== 'add-topic' && (
               <button type="submit">Submit Article</button>
             )}
           </form>
         )}
-        {
-          (title,
-          topic,
-          body && <Articles article={this.state.body} user={user} />)
-        }
+        {(title, topic, body && <Articles article={body} user={user} />)}
       </div>
     );
   }

@@ -17,10 +17,11 @@ class Articles extends Component {
   render() {
     const { articles, isLoading } = this.state;
     const { topics, user } = this.props;
-    console.log(this.props.location.state);
-    const hasBeenDeleted = this.props.location.state
+    console.log(this.props, '<<<thisprops');
+    const hasBeenDeleted = this.props.location
       ? this.props.location.state.articleDeleted
       : false;
+
     return (
       <section className="list">
         {hasBeenDeleted && <p>Article has been deleted!</p>}
@@ -44,7 +45,6 @@ class Articles extends Component {
                 </Link>
               </section>
             ))}
-            {/* <SingleArticle article={this.article} /> */}
           </div>
         )}
       </section>
@@ -61,7 +61,6 @@ class Articles extends Component {
 
   componentDidMount() {
     this.fetchArticles();
-    // this.addScrollEventListener();
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -81,7 +80,4 @@ class Articles extends Component {
   };
 }
 
-Articles.propTypes = {
-  articles: PropTypes.array.isRequired,
-};
 export default Articles;

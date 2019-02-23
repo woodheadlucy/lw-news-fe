@@ -44,6 +44,7 @@
 .footer {
   background: #720070;
   grid-area: footer;
+  height: 3em;
 }
 
 .chosenSort {
