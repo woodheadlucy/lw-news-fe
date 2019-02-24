@@ -66,16 +66,13 @@ export const getCommentsByArticle = async article_id => {
   );
   return data.comments;
 };
-export const deleteArticleById = async article_id => {
-  const data = await axios.delete(`${BASE_URL}/articles/${article_id}`);
-  return data;
-};
 
-export const deleteComment = async (article_id, comment_id) => {
-  console.log(article_id, comment_id, '<<FROMTHE API');
-  const data = axios.delete(
-    `${BASE_URL}/articles/${article_id}/comments/${comment_id}`
-  );
+export const deleteResourceById = async (article_id, comment_id) => {
+  const URL = comment_id
+    ? `${BASE_URL}/articles/${article_id}/comments/${comment_id}`
+    : `${BASE_URL}/articles/${article_id}`;
+
+  const data = axios.delete(URL);
   return data;
 };
 

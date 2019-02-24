@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { getCommentsByArticle, deleteComment } from '../api';
+import { getCommentsByArticle, deleteResourceById } from '../api';
 import moment from 'moment';
 import Voter from './Voter';
 import CommentAdd from './CommentAdd';
 import './Comments.css';
-import DeleteComment from './DeleteComment';
+import DeleteResource from './DeleteResource';
 import PropTypes from 'prop-types';
 
 class Comments extends Component {
@@ -38,7 +38,7 @@ class Comments extends Component {
               article_id={comment.article_id}
             />
             {comment.username === user.username && (
-              <DeleteComment
+              <DeleteResource
                 comment={comment}
                 deleteCommFunction={this.handleDeleteComment}
               />
@@ -67,7 +67,7 @@ class Comments extends Component {
     const restOfComms = currentComms.filter(
       comment => comment.comment_id !== commentToDelete.comment_id
     );
-    deleteComment(article_id, comment_id).then(data => {
+    deleteResourceById(article_id, comment_id).then(data => {
       this.setState(prevState => ({
         comments: (prevState.comments = restOfComms),
       }));

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import { addCommentByArticleId, deleteArticleById } from '../api';
+import { addCommentByArticleId, deleteResourceById } from '../api';
 import { getArticleById } from '../api';
 import Comments from './Comments';
 import { Router, navigate } from '@reach/router';
 import './SingleArticle.css';
 import Voter from './Voter';
-import DeleteArticle from './DeleteArticle';
+import DeleteArticle from './DeleteResource';
 import Error from './Error';
 class SingleArticle extends Component {
   state = {
@@ -64,7 +64,7 @@ class SingleArticle extends Component {
 
   handleDeleteArticle = () => {
     const { article_id } = this.props;
-    deleteArticleById(article_id).then(data => {
+    deleteResourceById(article_id).then(data => {
       navigate('/', { state: { articleDeleted: true } });
     });
   };
