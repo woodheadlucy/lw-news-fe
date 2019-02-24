@@ -14,13 +14,13 @@ class SingleArticle extends Component {
     comments: [],
     commentsShown: false,
     isLoading: true,
-    errorStatus: null,
+    error: null,
   };
 
   render() {
-    const { article, commentsShown, isLoading, errorStatus } = this.state;
+    const { article, commentsShown, isLoading, error } = this.state;
     const { user, article_id } = this.props;
-    if (errorStatus !== null) return <Error errorStatus={errorStatus} />;
+    if (error !== null) return <Error error={error} />;
     //how to get this so it doesn't show on the main article page
     if (isLoading) return <h1>Loading article...</h1>;
     return (
@@ -94,7 +94,7 @@ class SingleArticle extends Component {
           this.setState({ article, isLoading: false });
         })
         .catch(err => {
-          this.setState({ errorStatus: err.response.status });
+          this.setState({ error: err });
         })
     );
   }

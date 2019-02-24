@@ -21,6 +21,7 @@ class App extends Component {
   render() {
     const { user, topics } = this.state;
     console.log(topics);
+
     return (
       <div className="App">
         <Header />

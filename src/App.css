@@ -10,7 +10,7 @@
     'articles articles';
 }
 
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 500px) {
   .App {
     grid-template: 1fr 1fr 1fr 7fr / 1fr;
     grid-template-areas:

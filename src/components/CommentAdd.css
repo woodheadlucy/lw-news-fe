@@ -1,7 +1,5 @@
 .commentAdd {
-  background-color: rgb(121, 92, 118);
-}
-
-.commentAdd.addComm {
+  background-color: #ae7dad;
   font-family: palatino;
+  color: violet;
 }

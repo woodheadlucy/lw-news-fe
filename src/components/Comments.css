@@ -1,16 +1,8 @@
-/* .comment {
-  display: grid;
-  background-color: lavender;
-  grid-template-rows: 2fr 1fr 1fr;
+.comment {
+  background-color: rgba(144, 128, 175, 0.993);
 
-  grid-template-areas:
-    'body body'
-    'date username'
-    'delete votes';
-  justify-content: space-between;
-  align-content: space-around;
   border: 3px purple solid;
-} */
+}
 
 .commentBody {
   font-family: palatino;

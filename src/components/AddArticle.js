@@ -4,6 +4,7 @@ import Articles from './Articles';
 import { navigate } from '@reach/router';
 import NewTopic from './NewTopic';
 import './AddArticle.css';
+import Error from './Error';
 
 class AddArticle extends Component {
   state = {
@@ -11,15 +12,18 @@ class AddArticle extends Component {
     body: '',
     topic: 'coding',
     showAdd: false,
+    hasError: false,
+    error: '',
   };
   render() {
-    const { body, title, topic, showAdd } = this.state;
+    const { body, title, topic, showAdd, hasError, error } = this.state;
     const { topics, user } = this.props;
     console.log(this.state);
 
+    if (hasError) return <Error error={error} />;
     return (
       <div>
-        <button onClick={this.toggleArticle}>
+        <button className="buttonToAdd" onClick={this.toggleArticle}>
           {showAdd ? 'Cancel' : `Add an article, ${user.name}?`}
         </button>{' '}
         {showAdd && (
@@ -48,7 +52,10 @@ class AddArticle extends Component {
               <NewTopic user={user} />
             ) : (
               <div className="divArt">
-                <label className="title">Title</label>
+                <label htmlFor="titleSpace" className="title">
+                  Title
+                </label>
+                <br />
                 <input
                   className="titleSpace"
                   type="text"
@@ -57,7 +64,9 @@ class AddArticle extends Component {
                   name="title"
                   required
                 />
+                <br />
                 <label>Your article</label>
+                <br />
                 <textarea
                   rows="4"
                   cols="50"
@@ -97,7 +106,9 @@ class AddArticle extends Component {
     addArticle(title, topic, body, user.username).then(article => {
       navigate(`/articles/${article.article_id}`);
     });
-    this.setState({ title: '', topic: '', body: '' });
+    this.setState({ title: '', topic: '', body: '' }).catch(err => {
+      this.setState({ hasError: true, error: err });
+    });
   };
 }
 

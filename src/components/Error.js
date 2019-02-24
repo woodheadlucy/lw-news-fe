@@ -1,10 +1,23 @@
 import React from 'react';
+import { Link } from '@reach/router';
 
-const Error = ({ errorStatus, text }) => {
+const Error = ({ error }) => {
+  console.log(error, '<<<from err component');
   return (
-    <div>
-      <p>Error status: {errorStatus}</p>
-      <p>Something has gone wrong :(</p>
+    <div className="errorBox">
+      <h1>Oops!</h1>
+      {error ? (
+        <p>
+          Error: {error.response.status} {error.response.statusText}
+        </p>
+      ) : (
+        <h2>404</h2>
+      )}
+      <button className="toHome">
+        <Link className="homeLink" to="/">
+          Go home
+        </Link>
+      </button>
     </div>
   );
 };

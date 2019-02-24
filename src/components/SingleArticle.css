@@ -1,15 +1,7 @@
-/* .articleBox {
-  display: grid;
+.articleBox {
   background-color: #ae7dad;
-  grid-template-rows: 1fr 3fr 1fr 1fr 1fr;
-  grid-auto-columns: 2fr 1fr;
-  grid-template-areas:
-    'title topic'
-    'body body'
-    'created author'
-    'votes votes'
-    'delete null';
-} */
+  border: solid 2px silver;
+}
 
 .title2 {
   font-family: palatino;
@@ -48,10 +40,12 @@
   grid-area: delete;
   color: grey;
 }
-/* .commentsButton {
-  grid-area: commentsButton;
-  background-color: pink;
-} */
+.commentsButton {
+  background-color: lavender;
+  padding: 30px;
+  font-family: palatino;
+  font-size: 15px;
+}
 
 .votes {
   grid-area: votes;

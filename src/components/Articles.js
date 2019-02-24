@@ -6,21 +6,24 @@ import ArticleCardHomePage from './ArticleCardHomePage';
 import { addArticle } from '../api';
 import SortBy from './SortBy';
 import AddArticle from './AddArticle';
+import Error from './Error';
 
 class Articles extends Component {
   state = {
     articles: [],
     addArticle: false,
     isLoading: true,
+    hasErr: false,
+    error: '',
   };
   render() {
-    const { articles, isLoading } = this.state;
+    const { articles, isLoading, hasErr, error } = this.state;
     const { topics, user } = this.props;
 
     // const hasBeenDeleted = this.props.location
     //   ? this.props.location.state.articleDeleted
     //   : false;
-
+    if (hasErr) return <Error resetState={this.resetState} error={error} />;
     return (
       <section className="list">
         {/* {hasBeenDeleted && <p>Article has been deleted!</p>} */}
@@ -68,14 +71,21 @@ class Articles extends Component {
 
   fetchArticles = () => {
     const { topic } = this.props;
+    const { error } = this.state;
 
-    getArticles(topic).then(articles => {
-      this.setState({ articles, isLoading: false });
-    });
+    getArticles(topic)
+      .then(articles => {
+        this.setState({ articles, isLoading: false });
+      })
+      .catch(() => this.setState({ error }));
   };
 
   sortArticles = articles => {
     this.setState({ articles });
+  };
+
+  resetState = () => {
+    this.setState({ hasErr: false, err: '' });
   };
 }
 

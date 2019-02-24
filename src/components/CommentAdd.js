@@ -12,7 +12,7 @@ class CommentAdd extends Component {
     return (
       <div>
         <form className="commentAdd" onSubmit={this.handleSubmit}>
-          <h3 classname="addComm">Add comment</h3>
+          <h3 classname="addComm">Add a comment</h3>
           <textarea
             rows="4"
             cols="50"
