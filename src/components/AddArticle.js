@@ -48,12 +48,15 @@ class AddArticle extends Component {
             </select>
             <br />
             <label>Your article</label>
-            <input
+            <textarea
+              rows="4"
+              cols="50"
               className="typing"
               type="text"
               value={body}
               onChange={this.handleChange}
               name="body"
+              id="newArt"
               required
             />
             {topic !== 'add-topic' && (
@@ -61,6 +64,7 @@ class AddArticle extends Component {
             )}
           </form>
         )}
+
         {(title, topic, body && <Articles article={body} user={user} />)}
       </div>
     );

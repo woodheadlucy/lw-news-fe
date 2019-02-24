@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Auth.css';
 
 class Auth extends Component {
   state = { username: 'jessjelly' };
@@ -6,11 +7,11 @@ class Auth extends Component {
   render() {
     const { user, children } = this.props;
     const { username } = this.state;
-    console.log(user, '<<<USER FROM AUTH');
+
     if (user && user.username) return children;
     return (
-      <form className="sidebar" onSubmit={this.handleSubmit}>
-        <label>Username:</label>
+      <form className="login" onSubmit={this.handleSubmit}>
+        <label className="username">Username:</label>
         <input onChange={this.handleChange} value={username} />
         <button type="submit">Login</button>
       </form>

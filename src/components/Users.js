@@ -12,9 +12,20 @@ class Users extends Component {
     return (
       <div className="allUsers">
         {users.map(user => (
-          <p className="theUser" key={user.username}>
-            <Link to={`/users/${user.username}/articles`}>{user.username}</Link>
-          </p>
+          <div className="userCard">
+            <p className="theUser" key={user.username}>
+              <Link to={`/users/${user.username}/articles`}>
+                {user.username}
+              </Link>
+            </p>
+            <p>{user.name}</p>
+            <img
+              src="https://cdn3.iconfinder.com/data/icons/login-6/512/LOGIN-10-512.png"
+              width="100"
+              height="100"
+              alt="profile picture"
+            />
+          </div>
         ))}
       </div>
     );

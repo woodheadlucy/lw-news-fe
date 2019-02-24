@@ -11,7 +11,7 @@ class SingleUserArticles extends Component {
     if (isLoading) return <p>Loading....</p>;
     return (
       <div className="singleUserA">
-        <SortBy sortedArticles={this.sortedArticles} />
+        <SortBy sortArticles={this.sortArticles} />
         {articles.map(article => (
           <div key={article.article_id}>
             <Link to={`/articles/${article.article_id}`}>{article.title}</Link>

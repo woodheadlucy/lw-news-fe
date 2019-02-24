@@ -1,6 +1,14 @@
+.userCard {
+  border: solid purple 4px;
+  width: 400px;
+  float: center;
+  align-content: center;
+}
+
 .allUsers {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .theUser {

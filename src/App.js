@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import Nav from './components/Nav';
-import Sidebar from './components/Sidebar';
-import Footer from './components/Footer';
+import Login from './components/Login';
+import LandingPage from './components/LandingPage';
 import Articles from './components/Articles';
 import { Router } from '@reach/router';
 import Auth from './components/Auth';
@@ -19,13 +19,13 @@ class App extends Component {
     topics: [],
   };
   render() {
-    // console.log(this.state.user, '<<< THIS IS USER FROM APP ');
     const { user, topics } = this.state;
     console.log(topics);
     return (
       <div className="App">
         <Header />
         <Nav user={user} topics={topics} />
+
         <Auth user={user} login={this.setUser}>
           <Router className="main">
             <Articles path="/" topics={topics} user={user} />
@@ -35,9 +35,9 @@ class App extends Component {
             <SingleUserArticles path="/users/:username/articles" />
             <NoMatch default />
           </Router>
-          <Sidebar user={user} logout={this.clearUser} />
+          {/* <LandingPage /> */}
+          <Login user={user} logout={this.clearUser} />
         </Auth>
-        <Footer />
       </div>
     );
   }

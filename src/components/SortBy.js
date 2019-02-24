@@ -17,7 +17,7 @@ class SortBy extends Component {
       <div>
         <form onSubmit={this.handleSubmit} className="sortForm">
           <div>
-            <label>Sort by:</label>
+            <label className="sortText">Sort by:</label>
 
             <select
               id="sort_by"
@@ -35,7 +35,7 @@ class SortBy extends Component {
             </select>
           </div>
           <div>
-            <label>Order:</label>
+            <label className="sortText">Order:</label>
             <select
               id="order"
               className="chosenSort"
@@ -47,7 +47,7 @@ class SortBy extends Component {
             </select>
           </div>
           <div>
-            <label>Results per page:</label>
+            <label className="sortText">Results per page:</label>
             <select
               id="limit"
               className="chosenSort"
@@ -87,10 +87,10 @@ class SortBy extends Component {
 
   componentDidUpdate = (prevProps, prevState) => {
     const { sort_by, order, limit, p } = this.state;
-    const { sortedArticles } = this.props;
+    const { sortArticles } = this.props;
     if (p !== prevState.p) {
       getSortedArticles(sort_by, order, limit, p).then(articles => {
-        sortedArticles(articles);
+        sortArticles(articles);
       });
       getSortedArticles(sort_by, order, limit, p + 1).then(articles => {
         articles[0]
@@ -115,10 +115,10 @@ class SortBy extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { sort_by, order, limit } = this.state;
-    const { sortedArticles } = this.props;
+    const { sortArticles } = this.props;
     getSortedArticles(sort_by, order, limit, 1)
       .then(articles => {
-        sortedArticles(articles);
+        sortArticles(articles);
       })
       .then(this.setState({ p: 1 }));
   };

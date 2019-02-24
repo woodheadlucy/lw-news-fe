@@ -20,7 +20,10 @@ class NewTopicArticle extends Component {
             name="title"
           />
           <label>Your article</label>
-          <input
+          <textarea
+            rows="4"
+            cols="50"
+            id="articleForm"
             type="text"
             value={body}
             onChange={this.handleChange}

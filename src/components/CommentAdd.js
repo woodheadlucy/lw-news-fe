@@ -13,7 +13,13 @@ class CommentAdd extends Component {
       <div>
         <form className="commentAdd" onSubmit={this.handleSubmit}>
           <h3 classname="addComm">Add comment</h3>
-          <input type="text" value={body} onChange={this.handleChange} />
+          <textarea
+            rows="4"
+            cols="50"
+            type="text"
+            value={body}
+            onChange={this.handleChange}
+          />
 
           <button type="submit">Submit</button>
         </form>

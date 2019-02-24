@@ -29,7 +29,7 @@ class Articles extends Component {
           <h3>Loading articles...</h3>
         ) : (
           <div className="main">
-            <SortBy sortedArticles={this.sortedArticles} />
+            <SortBy sortArticles={this.sortArticles} />
             <AddArticle
               topics={topics}
               user={user}
@@ -51,7 +51,7 @@ class Articles extends Component {
     );
   }
 
-  postedArticle = (title, topic, body, username) => {
+  postArticle = (title, topic, body, username) => {
     addArticle(title, topic, body, username).then(article => {
       this.setState(prevState => ({
         articles: [article, ...prevState.articles],
@@ -75,7 +75,7 @@ class Articles extends Component {
     });
   };
 
-  sortedArticles = articles => {
+  sortArticles = articles => {
     this.setState({ articles });
   };
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getCommentsByArticle, deleteComment } from '../api';
-import Moment from 'moment';
+import moment from 'moment';
 import Voter from './Voter';
 import CommentAdd from './CommentAdd';
 import './Comments.css';
@@ -17,12 +17,17 @@ class Comments extends Component {
     const { user, article_id, newComment } = this.props;
 
     return (
-      <div className="commentBox">
+      <div className="articleBox">
+        <CommentAdd
+          user={user}
+          comment_id={comments.comment_id}
+          article_id={article_id}
+        />
         {comments.map(comment => (
           <div className="comment" key={comment.comment_id}>
             <p className="commentBody">{comment.body}</p>
             <p className="createdAt">
-              {Moment(comment.created_at, 'YYYY-MM-DD-Thh:mm:ss').fromNow()}
+              {moment(comment.created_at, 'YYYY-MM-DD-Thh:mm:ss').fromNow()}
             </p>
             <p className="username">Username: {comment.username}</p>
 
@@ -40,11 +45,6 @@ class Comments extends Component {
             )}
           </div>
         ))}
-        <CommentAdd
-          user={user}
-          comment_id={comments.comment_id}
-          article_id={article_id}
-        />
         {newComment}
       </div>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Moment from 'moment';
+import moment from 'moment';
 import { addCommentByArticleId, deleteArticleById } from '../api';
 import { getArticleById } from '../api';
 import Comments from './Comments';
@@ -12,7 +12,6 @@ class SingleArticle extends Component {
   state = {
     article: {},
     comments: [],
-
     commentsShown: false,
     isLoading: true,
     errorStatus: null,
@@ -25,7 +24,7 @@ class SingleArticle extends Component {
     //how to get this so it doesn't show on the main article page
     if (isLoading) return <h1>Loading article...</h1>;
     return (
-      <div className="articleBox">
+      <section className="articleBox">
         <h2 className="title2">{article.title}</h2>
         <p className="topic2">{article.topic}</p>
         <p className="body2">{article.body}</p>
@@ -36,7 +35,7 @@ class SingleArticle extends Component {
         )}
         <p className="author2">Author: {article.author}</p>
         <p className="createdAt2">
-          {Moment(article.created_at, 'YYYY-MM-DD-Thh:mm:ss').fromNow()}
+          {moment(article.created_at, 'YYYY-MM-DD-Thh:mm:ss').fromNow()}
         </p>
 
         {article.author === user.username && (
@@ -59,7 +58,7 @@ class SingleArticle extends Component {
         <Router>
           <Comments path="/articles/:article_id/comments" />
         </Router>
-      </div>
+      </section>
     );
   }
 
