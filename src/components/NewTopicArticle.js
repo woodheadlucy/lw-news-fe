@@ -8,11 +8,11 @@ class NewTopicArticle extends Component {
   };
   render() {
     const { body, title } = this.state;
-
+    const { topic } = this.props;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>Title</label>
+          <label> Title</label>
           <input
             type="text"
             value={title}
@@ -29,7 +29,7 @@ class NewTopicArticle extends Component {
             onChange={this.handleChange}
             name="body"
           />
-          <button type="submit">Submit</button>
+          <button type="submit">Submit the first article to {topic}</button>
         </form>
       </div>
     );
@@ -46,7 +46,6 @@ class NewTopicArticle extends Component {
     const { user, topic } = this.props;
 
     addArticle(title, topic, body, user.username).then(article => {
-      console.log(user, '<<<USER ');
       navigate(`/articles/${article.article_id}`);
     });
     this.setState({ title: '', body: '' });

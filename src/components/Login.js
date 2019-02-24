@@ -8,6 +8,7 @@ const Login = ({ user, logout }) => {
         {' '}
         <p>Welcome back {`${user.username}`}</p>
         <button onClick={logout}>Logout</button>
+        <br />
         <Link className="allUsersLink" to={`/users`}>
           Show all users
         </Link>

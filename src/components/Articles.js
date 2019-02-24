@@ -6,7 +6,6 @@ import ArticleCardHomePage from './ArticleCardHomePage';
 import { addArticle } from '../api';
 import SortBy from './SortBy';
 import AddArticle from './AddArticle';
-import PropTypes from 'prop-types';
 
 class Articles extends Component {
   state = {
@@ -17,14 +16,14 @@ class Articles extends Component {
   render() {
     const { articles, isLoading } = this.state;
     const { topics, user } = this.props;
-    console.log(this.props, '<<<thisprops');
-    const hasBeenDeleted = this.props.location
-      ? this.props.location.state.articleDeleted
-      : false;
+
+    // const hasBeenDeleted = this.props.location
+    //   ? this.props.location.state.articleDeleted
+    //   : false;
 
     return (
       <section className="list">
-        {hasBeenDeleted && <p>Article has been deleted!</p>}
+        {/* {hasBeenDeleted && <p>Article has been deleted!</p>} */}
         {isLoading ? (
           <h3>Loading articles...</h3>
         ) : (

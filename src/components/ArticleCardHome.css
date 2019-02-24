@@ -11,6 +11,9 @@
   text-overflow: ellipsis;
   height: 15rem;
   padding: 4px;
+  align-items: center;
+  margin: auto;
+  width: 600px;
 }
 
 .title1 {

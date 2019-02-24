@@ -10,29 +10,27 @@ class AddArticle extends Component {
     title: '',
     body: '',
     topic: 'coding',
+    showAdd: false,
   };
   render() {
-    const { body, title, topic } = this.state;
+    const { body, title, topic, showAdd } = this.state;
     const { topics, user } = this.props;
     console.log(this.state);
 
     return (
       <div>
-        {this.state.topic === 'add-topic' && <NewTopic user={user} />}
-        {this.state.topic !== 'add topic' && (
+        <button onClick={this.toggleArticle}>
+          {showAdd ? 'Cancel' : `Add an article, ${user.name}?`}
+        </button>{' '}
+        {showAdd && (
           <form className="articleAdd" onSubmit={this.handleSubmit}>
-            <h1>Add your article</h1> <label>Title</label>
-            <input
-              type="text"
-              value={title}
+            <label className="topic">Topic</label>
+            <select
+              className="topicDrop"
+              id="topics"
               onChange={this.handleChange}
-              name="title"
-              required
-            />
-            <br />
-            <label>Topic</label>
-            {/* ADD OR SELECT TOPIC */}
-            <select id="topics" onChange={this.handleChange} name="topic">
+              name="topic"
+            >
               {' '}
               {topics &&
                 topics.map(topic => {
@@ -46,30 +44,46 @@ class AddArticle extends Component {
                 Add a topic
               </option>
             </select>
-            <br />
-            <label>Your article</label>
-            <textarea
-              rows="4"
-              cols="50"
-              className="typing"
-              type="text"
-              value={body}
-              onChange={this.handleChange}
-              name="body"
-              id="newArt"
-              required
-            />
-            {topic !== 'add-topic' && (
-              <button type="submit">Submit Article</button>
+            {this.state.topic === 'add-topic' ? (
+              <NewTopic user={user} />
+            ) : (
+              <div className="divArt">
+                <label className="title">Title</label>
+                <input
+                  className="titleSpace"
+                  type="text"
+                  value={title}
+                  onChange={this.handleChange}
+                  name="title"
+                  required
+                />
+                <label>Your article</label>
+                <textarea
+                  rows="4"
+                  cols="50"
+                  className="typing"
+                  type="text"
+                  value={body}
+                  onChange={this.handleChange}
+                  name="body"
+                  id="newArt"
+                  required
+                />{' '}
+              </div>
             )}
+
+            <button type="submit">Submit article</button>
           </form>
         )}
-
         {(title, topic, body && <Articles article={body} user={user} />)}
       </div>
     );
   }
 
+  toggleArticle = () => {
+    const { showAdd } = this.state;
+    this.setState({ showAdd: !showAdd });
+  };
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -81,7 +95,6 @@ class AddArticle extends Component {
     const { user } = this.props;
 
     addArticle(title, topic, body, user.username).then(article => {
-      console.log(article, '<<<<NEW ARTICLE');
       navigate(`/articles/${article.article_id}`);
     });
     this.setState({ title: '', topic: '', body: '' });

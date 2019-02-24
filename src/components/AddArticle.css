@@ -1,5 +1,37 @@
 .articleAdd {
+  background-color: rgba(223, 168, 66, 0.603);
+  border: 3px solid darkgoldenrod;
+  width: 600px;
+  height: 15rem;
+  float: center;
+  margin: auto;
+  padding: 4px;
+  align-content: center;
+  position: center;
   display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    'topic'
+    'topicDrop'
+    'title'
+    'titleSpace'
+    'body';
+}
+
+.divArt {
+  grid-area: title;
+}
+.topic {
+  grid-area: topic;
+}
+.topicDrop {
+  grid-area: topicDrop;
+}
+.title {
+  grid-area: title;
+}
+.titleSpace {
+  grid-area: titleSpace;
 }
 
 .articleAdd.typing {

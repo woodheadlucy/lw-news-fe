@@ -7,9 +7,10 @@ class NewTopic extends Component {
     slug: '',
     description: '',
     newSlug: '',
+    toggleArticle: false,
   };
   render() {
-    const { slug, description, newSlug } = this.state;
+    const { slug, description, newSlug, toggleArticle } = this.state;
     const { user } = this.props;
     return (
       <div>
@@ -30,12 +31,19 @@ class NewTopic extends Component {
             onChange={this.handleChange}
             required
           />
-          <button type="submit">Submit new topic!!!</button>
+          <button onClick={this.toggleNewTopicArticle} type="submit">
+            Submit new topic!!!
+          </button>
         </form>
-        <NewTopicArticle topic={newSlug} user={user} />;
+        {toggleArticle && <NewTopicArticle topic={newSlug} user={user} />}
       </div>
     );
   }
+
+  toggleNewTopicArticle = () => {
+    const { toggleArticle } = this.state;
+    this.setState({ toggleArticle: !toggleArticle });
+  };
 
   handleChange = event => {
     const { name, value } = event.target;

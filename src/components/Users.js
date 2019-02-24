@@ -23,7 +23,7 @@ class Users extends Component {
               src="https://cdn3.iconfinder.com/data/icons/login-6/512/LOGIN-10-512.png"
               width="100"
               height="100"
-              alt="profile picture"
+              alt="profile avatar"
             />
           </div>
         ))}
