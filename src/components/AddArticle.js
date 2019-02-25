@@ -18,7 +18,6 @@ class AddArticle extends Component {
   render() {
     const { body, title, topic, showAdd, hasError, error } = this.state;
     const { topics, user } = this.props;
-    console.log(this.state);
 
     if (hasError) return <Error error={error} />;
     return (

@@ -77,7 +77,6 @@ export const deleteResourceById = async (article_id, comment_id) => {
 };
 
 export const addCommentByArticleId = async (body, article_id, userObj) => {
-  console.log(body, article_id, userObj);
   const { username } = userObj;
   const { data } = await axios.post(
     `${BASE_URL}/articles/${article_id}/comments`,
@@ -101,7 +100,6 @@ export const voteOnResource = async ({ article_id, direction, comment_id }) => {
 };
 
 export const addArticle = async (title, topic, body, author) => {
-  console.log(title, topic, body, author);
   const res = await axios.post(`${BASE_URL}/topics/${topic}/articles`, {
     title,
     body,

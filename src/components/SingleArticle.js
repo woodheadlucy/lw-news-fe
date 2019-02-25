@@ -61,6 +61,9 @@ class SingleArticle extends Component {
     );
   }
 
+  componentDidMount() {
+    this.fetchArticle();
+  }
   handleDeleteArticle = () => {
     const { article_id } = this.props;
     deleteResourceById(article_id).then(data => {
@@ -79,10 +82,6 @@ class SingleArticle extends Component {
       }));
     });
   };
-
-  componentDidMount() {
-    this.fetchArticle();
-  }
 
   fetchArticle() {
     const { article_id } = this.props;

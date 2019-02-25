@@ -53,6 +53,13 @@ class Articles extends Component {
     );
   }
 
+  componentDidMount() {
+    this.fetchArticles();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.topic !== this.props.topic) this.fetchArticles();
+  }
+
   postArticle = (title, topic, body, username) => {
     addArticle(title, topic, body, username).then(article => {
       this.setState(prevState => ({
@@ -60,14 +67,6 @@ class Articles extends Component {
       }));
     });
   };
-
-  componentDidMount() {
-    this.fetchArticles();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.topic !== this.props.topic) this.fetchArticles();
-  }
 
   fetchArticles = () => {
     const { topic } = this.props;

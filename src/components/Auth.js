@@ -3,11 +3,11 @@ import './Auth.css';
 import Users from './Users';
 
 class Auth extends Component {
-  state = { username: 'jessjelly', error: null };
+  state = { username: 'jessjelly', hasError: false, error: null };
 
   render() {
     const { user, children } = this.props;
-    const { username } = this.state;
+    const { username, hasError, error } = this.state;
 
     if (user && user.username) return children;
     return (
@@ -18,8 +18,7 @@ class Auth extends Component {
             <input onChange={this.handleChange} value={username} />
             <button type="submit">Login</button>
           </form>
-
-          {this.state.error && <h1>Invalid Username</h1>}
+          {hasError && <p>Invalid Username!</p>}
         </div>
         <div className="main">
           <p>Please login with one of the following usernames:</p>
@@ -36,11 +35,17 @@ class Auth extends Component {
   };
 
   handleSubmit = event => {
+    console.log(event);
     event.preventDefault();
     const { login } = this.props;
     const { username, error } = this.state;
-    login(username);
-    this.setState({ username: '' }).catch({ error });
+    login(username)
+      .then(() => {
+        this.setState({ username: '' });
+      })
+      .catch(() => {
+        this.setState({ error, hasError: true, username: '' });
+      });
   };
 }
 

@@ -11,6 +11,7 @@ const Nav = ({ topics }) => {
           <Link to={`/topics/${topic.slug}`}>{topic.slug} </Link>
         </span>
       ))}
+      <span> All topics</span>
     </div>
   );
 };

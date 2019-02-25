@@ -32,6 +32,9 @@
   grid-area: nav;
 }
 
+.links {
+  color: purple;
+}
 .main {
   display: grid;
   grid-template: 1fr 2fr 1fr;
