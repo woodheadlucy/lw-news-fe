@@ -54,7 +54,6 @@ class NewTopic extends Component {
     event.preventDefault();
     const { slug, description } = this.state;
     addNewTopic(slug, description).then(topic => {
-      console.log(topic);
       this.setState({ slug: '', description: '', newSlug: topic.slug });
     });
   };

@@ -5,7 +5,6 @@ import Voter from './Voter';
 import CommentAdd from './CommentAdd';
 import './Comments.css';
 import DeleteResource from './DeleteResource';
-import PropTypes from 'prop-types';
 
 class Comments extends Component {
   state = {
@@ -22,6 +21,7 @@ class Comments extends Component {
           user={user}
           comment_id={comments.comment_id}
           article_id={article_id}
+          handleNewComment={this.handleNewComment}
         />
         {comments.map(comment => (
           <div className="comment" key={comment.comment_id}>
@@ -73,10 +73,14 @@ class Comments extends Component {
       }));
     });
   };
-}
 
-Comments.propTypes = {
-  comments: PropTypes.array.isRequired,
-};
+  handleNewComment = newComment => {
+    const currentComms = this.state.comments;
+    const restOfComms = [newComment, ...currentComms];
+    this.setState(prevState => ({
+      comments: (prevState.comments = restOfComms),
+    }));
+  };
+}
 
 export default Comments;

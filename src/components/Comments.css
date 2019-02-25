@@ -1,6 +1,9 @@
 .comment {
   background-color: rgba(144, 128, 175, 0.993);
-
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
   border: 3px purple solid;
 }
 

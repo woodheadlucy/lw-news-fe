@@ -21,12 +21,11 @@ class SingleArticle extends Component {
     const { article, commentsShown, isLoading, error } = this.state;
     const { user, article_id } = this.props;
     if (error !== null) return <Error error={error} />;
-    //how to get this so it doesn't show on the main article page
     if (isLoading) return <h1>Loading article...</h1>;
     return (
       <section className="articleBox">
-        <h2 className="title2">{article.title}</h2>
         <p className="topic2">{article.topic}</p>
+        <h2 className="title2">{article.title}</h2>
         <p className="body2">{article.body}</p>
         {article.author === user.username ? (
           <p>Votes:{article.votes}</p>

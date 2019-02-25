@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import Nav from './components/Nav';
 import Login from './components/Login';
-import LandingPage from './components/LandingPage';
+// import LandingPage from './components/LandingPage';
 import Articles from './components/Articles';
 import { Router } from '@reach/router';
 import Auth from './components/Auth';
@@ -33,6 +33,7 @@ class App extends Component {
             <Articles path="/topics/:topic" topics={topics} user={user} />
             <SingleArticle path="/articles/:article_id" user={user} />
             <Users path="/users" />
+            {/* add user back if doesnt work */}
             <SingleUserArticles path="/users/:username/articles" />
             <NoMatch default />
           </Router>
@@ -43,23 +44,19 @@ class App extends Component {
     );
   }
 
-  // componentDidMount() {
-  //   const retrievedState = localStorage.getItem('state');
-  //   if (retrievedState) {
-  //     this.setState(JSON.parse(retrievedState));
-  //   }
-  //   this.fetchTopics();
-  // }
+  componentDidMount() {
+    const retrievedState = localStorage.getItem('state');
+    if (retrievedState) {
+      this.setState(JSON.parse(retrievedState));
+    }
+    this.fetchTopics();
+  }
   componentDidUpdate() {
     this.handleSave();
   }
   handleSave = () => {
     localStorage.setItem('state', JSON.stringify(this.state));
   };
-
-  componentDidMount() {
-    this.fetchTopics();
-  }
 
   fetchTopics = () => {
     console.log('fetching topics');

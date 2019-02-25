@@ -7,7 +7,6 @@ import { addArticle } from '../api';
 import SortBy from './SortBy';
 import AddArticle from './AddArticle';
 import Error from './Error';
-
 class Articles extends Component {
   state = {
     articles: [],
@@ -24,6 +23,7 @@ class Articles extends Component {
     //   ? this.props.location.state.articleDeleted
     //   : false;
     if (hasErr) return <Error resetState={this.resetState} error={error} />;
+
     return (
       <section className="list">
         {/* {hasBeenDeleted && <p>Article has been deleted!</p>} */}

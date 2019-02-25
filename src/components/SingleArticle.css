@@ -1,6 +1,10 @@
 .articleBox {
   background-color: #ae7dad;
   border: solid 2px silver;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .title2 {
@@ -22,6 +26,7 @@
 .body2 {
   grid-area: body;
   background-color: rgb(168, 120, 168);
+  justify-content: left;
 }
 
 .author2 {

@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from '@reach/router';
 
 const Error = ({ error }) => {
-  console.log(error, '<<<from err component');
   return (
     <div className="errorBox">
       <h1>Oops!</h1>

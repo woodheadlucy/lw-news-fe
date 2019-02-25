@@ -106,9 +106,7 @@ class AddArticle extends Component {
     addArticle(title, topic, body, user.username).then(article => {
       navigate(`/articles/${article.article_id}`);
     });
-    this.setState({ title: '', topic: '', body: '' }).catch(err => {
-      this.setState({ hasError: true, error: err });
-    });
+    this.setState({ title: '', topic: '', body: '' });
   };
 }
 
