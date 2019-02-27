@@ -19,14 +19,14 @@ class Articles extends Component {
     const { articles, isLoading, hasErr, error } = this.state;
     const { topics, user } = this.props;
 
-    // const hasBeenDeleted = this.props.location
-    //   ? this.props.location.state.articleDeleted
-    //   : false;
+    const hasBeenDeleted = this.props.location
+      ? this.props.location.state.articleDeleted
+      : false;
     if (hasErr) return <Error resetState={this.resetState} error={error} />;
 
     return (
       <section className="list">
-        {/* {hasBeenDeleted && <p>Article has been deleted!</p>} */}
+        {hasBeenDeleted && <p>Article has been deleted!</p>}
         {isLoading ? (
           <h3>Loading articles...</h3>
         ) : (

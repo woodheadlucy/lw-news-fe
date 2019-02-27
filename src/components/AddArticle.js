@@ -83,7 +83,6 @@ class AddArticle extends Component {
             <button type="submit">Submit article</button>
           </form>
         )}
-        {(title, topic, body && <Articles article={body} user={user} />)}
       </div>
     );
   }

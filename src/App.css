@@ -5,7 +5,7 @@
 
   grid-template: 1fr 1fr 7fr /3fr 1fr;
   grid-template-areas:
-    'header sidebar'
+    'header login'
     'nav nav'
     'articles articles';
 }
@@ -15,8 +15,8 @@
     grid-template: 1fr 1fr 1fr 7fr / 1fr;
     grid-template-areas:
       'header'
+      'login'
       'nav'
-      'sidebar'
       'articles';
   }
 }
