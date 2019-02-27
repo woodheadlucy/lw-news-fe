@@ -7,7 +7,7 @@ class Auth extends Component {
 
   render() {
     const { user, children } = this.props;
-    const { username, hasError, error } = this.state;
+    const { username, hasError } = this.state;
 
     if (user && user.username) return children;
     return (

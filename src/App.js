@@ -11,6 +11,7 @@ import SingleArticle from './components/SingleArticle';
 import NoMatch from './components/NoMatch';
 import Users from './components/Users';
 import SingleUserArticles from './components/SingleUserArticles';
+import AllTopics from './components/AllTopics';
 
 class App extends Component {
   state = {
@@ -27,6 +28,7 @@ class App extends Component {
         <Auth user={user} login={this.setUser}>
           <Router className="main">
             <Articles path="/" topics={topics} user={user} />
+            <AllTopics path="/topics" topics={topics} user={user} />
             <Articles path="/topics/:topic" topics={topics} user={user} />
             <SingleArticle path="/articles/:article_id" user={user} />
             <Users path="/users" />

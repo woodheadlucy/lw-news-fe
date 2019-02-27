@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { addArticle } from '../api';
-import Articles from './Articles';
 import { navigate } from '@reach/router';
 import NewTopic from './NewTopic';
 import './AddArticle.css';
@@ -16,7 +15,7 @@ class AddArticle extends Component {
     error: '',
   };
   render() {
-    const { body, title, topic, showAdd, hasError, error } = this.state;
+    const { body, title, showAdd, hasError, error } = this.state;
     const { topics, user } = this.props;
 
     if (hasError) return <Error error={error} />;

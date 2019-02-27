@@ -1,10 +1,15 @@
 .links {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   font-family: palatino;
   text-decoration: none;
   text-transform: uppercase;
   overflow: scroll;
   color: purple;
+}
+
+.Alltopics {
+  font-weight: bold;
+  color: brown;
 }
