@@ -22,7 +22,7 @@
 }
 
 .header {
-  background: #720070;
+  background-color: #720070;
   grid-area: header;
   justify-content: start;
 }
@@ -30,6 +30,7 @@
 .nav {
   background: lavender;
   grid-area: nav;
+  align-content: space-around;
 }
 
 .links {
