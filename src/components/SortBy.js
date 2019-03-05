@@ -35,10 +35,10 @@ class SortBy extends Component {
             </select>
           </div>
           <div>
-            <label className="sortText">Order:</label>
+            <label className="orderText">Order:</label>
             <select
               id="order"
-              className="chosenSort"
+              className="orderSort"
               onChange={this.handleOrder}
               defaultValue="DESC"
             >
@@ -47,10 +47,10 @@ class SortBy extends Component {
             </select>
           </div>
           <div>
-            <label className="sortText">Results per page:</label>
+            <label className="limitText">Results per page:</label>
             <select
               id="limit"
-              className="chosenSort"
+              className="limitSort"
               onChange={this.handleLimit}
               defaultValue="10"
             >
@@ -59,24 +59,24 @@ class SortBy extends Component {
               <option value="20">20</option>
             </select>
           </div>
-          <br />
+
           <button type="submit" className="SubmitButton">
             Sort
           </button>
         </form>
-        <div className="sortingBar">
+        <div className="pageChange">
           <button
             onClick={() => this.changePage(-1)}
             disabled={p < 2}
-            className="responsiveButton"
+            className="responsiveButton1"
           >
             Previous page
           </button>
-          <p className="">page {p}</p>
+          <p className="page">page {p}</p>
           <button
             onClick={() => this.changePage(1)}
             disabled={nextPage}
-            className="responsiveButton"
+            className="responsiveButton2"
           >
             Next page
           </button>

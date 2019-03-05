@@ -35,7 +35,6 @@ class Auth extends Component {
   };
 
   handleSubmit = event => {
-    console.log(event);
     event.preventDefault();
     const { login } = this.props;
     const { username, error } = this.state;
