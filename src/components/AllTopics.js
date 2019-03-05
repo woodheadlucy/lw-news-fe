@@ -4,10 +4,13 @@ import './AllTopics.css';
 const AllTopics = ({ topics }) => {
   return (
     <div>
+      <h1>All Topics</h1>
       {topics.map(topic => (
         <ul>
           <li key={topic.slug}>
-            <Link to={`/topics/${topic.slug}`}>{topic.slug} </Link>
+            <Link className="allTopics" to={`/topics/${topic.slug}`}>
+              {topic.slug}{' '}
+            </Link>
           </li>
         </ul>
       ))}

@@ -1,7 +1,14 @@
+h1 {
+  font-family: palatino;
+}
 ul {
   padding: 20px;
 }
 
 ul li {
   list-style: none;
+}
+
+.allTopics {
+  text-transform: uppercase;
 }

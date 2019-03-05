@@ -7,9 +7,20 @@
   text-transform: uppercase;
   overflow: scroll;
   color: purple;
+  padding: 15px;
+}
+
+.singleLink {
+  padding: 30px;
 }
 
 .Alltopics {
   font-weight: bold;
   color: brown;
+  padding: 15px;
+  align-items: center;
+  font-family: palatine;
+  text-decoration: none;
+  color: darkmagenta;
+  text-shadow: #fc0 1px 0 10px;
 }
